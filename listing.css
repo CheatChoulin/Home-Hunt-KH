@@ -279,6 +279,56 @@ header{
         font-size: 16px;
     }
 }
+.container-features .no-results{
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+    text-align: center;
+    border: 1px dashed #B4490B;
+    border-radius: 8px;
+}
+
+.container-features .no-results h4{
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.container-features .no-results p{
+    margin: 10px 0 24px 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    color: #555;
+}
+
+.container-features .no-results a{
+    display: inline-flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 28px;
+
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+
+    background: #B4490B;
+    border-radius: 8px;
+}
+
+.container-features .room-card.fade-in{
+    animation: cardFade 0.35s ease;
+}
+
+@keyframes cardFade{
+    from{ opacity: 0; transform: translateY(8px); }
+    to{ opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .container-features .room-card.fade-in{
+        animation: none;
+    }
+}
 /*Footer of the website*/
 footer{
     width: 100%;
