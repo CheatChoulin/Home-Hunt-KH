@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Filters</title>
+    <link rel="stylesheet" href="more.css">
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.nav-bar-header a');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+            function setActive(activeLink) {
+                links.forEach(function (l) {
+                    l.classList.remove('active');
+                });
+                activeLink.classList.add('active');
+            }
+
+            links.forEach(function (link) {
+                // if the link goes to the page you are on, mark it active
+                if (link.getAttribute('href') === currentPage) {
+                    setActive(link);
+                }
+
+                // when you click a link, move the active style to it
+                link.addEventListener('click', function () {
+                    setActive(link);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container-header">
+
+            <div class="logo-icon-header">
+                <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+            </div>
+            
+            <div class="search-header">
+                <div class="icon-search">
+                    <img src="/image/icon search.jpg" alt="icon">
+                    <input type="text" placeholder="Search here">
+                </div>
+            </div>
+
+            <div class="nav-bar-header">
+                <a href="index.html" class="active" data-text="Home">Home</a>
+                <a href="#" data-text="Listings">Listings</a>
+                <a href="#" data-text="Book a Visit">Book a Visit</a>
+            </div>
+
+        </div>
+    </header>
+    <main>
+
+<div class="more-filters">
+
+    <div class="filter-header">
+        <h2>More Filters</h2>
+        <p>Find a property that matches your lifestyle.</p>
+    </div>
+
+    <!-- PROPERTY DETAILS -->
+    <div class="filter-section">
+        <h3>Property Details</h3>
+
+        <div class="filter-grid">
+
+            <div class="filter-group">
+                <label>Property Type</label>
+                <select>
+                    <option>Any Type</option>
+                    <option>Room</option>
+                    <option>Apartment</option>
+                    <option>Condo</option>
+                    <option>House</option>
+                    <option>Villa</option>
+                    <option>Studio</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Bedrooms</label>
+                <select>
+                    <option>Any</option>
+                    <option>Studio</option>
+                    <option>1 Bedroom</option>
+                    <option>2 Bedrooms</option>
+                    <option>3 Bedrooms</option>
+                    <option>4 Bedrooms</option>
+                    <option>5+ Bedrooms</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Bathrooms</label>
+                <select>
+                    <option>Any</option>
+                    <option>1 Bathroom</option>
+                    <option>2 Bathrooms</option>
+                    <option>3 Bathrooms</option>
+                    <option>4+ Bathrooms</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Property Size</label>
+                <select>
+                    <option>Any Size</option>
+                    <option>Under 20 m²</option>
+                    <option>20 - 40 m²</option>
+                    <option>40 - 60 m²</option>
+                    <option>60 - 100 m²</option>
+                    <option>100 - 150 m²</option>
+                    <option>150+ m²</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Floor Level</label>
+                <select>
+                    <option>Any Floor</option>
+                    <option>Ground Floor</option>
+                    <option>1st - 3rd Floor</option>
+                    <option>4th - 6th Floor</option>
+                    <option>7th - 10th Floor</option>
+                    <option>Above 10th Floor</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Furnishing</label>
+                <select>
+                    <option>Any</option>
+                    <option>Fully Furnished</option>
+                    <option>Semi-Furnished</option>
+                    <option>Unfurnished</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RENTAL DETAILS -->
+    <div class="filter-section">
+        <h3>Rental Details</h3>
+
+        <div class="filter-grid">
+
+            <div class="filter-group">
+                <label>Availability</label>
+                <select>
+                    <option>Any Time</option>
+                    <option>Available Now</option>
+                    <option>Available This Week</option>
+                    <option>Available This Month</option>
+                    <option>Coming Soon</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Lease Duration</label>
+                <select>
+                    <option>Any Duration</option>
+                    <option>Short Term</option>
+                    <option>3 - 6 Months</option>
+                    <option>6 - 12 Months</option>
+                    <option>12+ Months</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Utilities</label>
+                <select>
+                    <option>Any</option>
+                    <option>Utilities Included</option>
+                    <option>Electricity Included</option>
+                    <option>Water Included</option>
+                    <option>All Utilities Excluded</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Payment Method</label>
+                <select>
+                    <option>Any Method</option>
+                    <option>Monthly Payment</option>
+                    <option>Quarterly Payment</option>
+                    <option>Yearly Payment</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- AMENITIES -->
+    <div class="filter-section">
+        <h3>Amenities & Facilities</h3>
+
+        <div class="amenities-grid">
+
+            <label><input type="checkbox"> Air Conditioning</label>
+            <label><input type="checkbox"> Wi-Fi / Internet</label>
+            <label><input type="checkbox"> Refrigerator</label>
+            <label><input type="checkbox"> Washing Machine</label>
+            <label><input type="checkbox"> Water Heater</label>
+            <label><input type="checkbox"> Kitchen</label>
+            <label><input type="checkbox"> TV</label>
+            <label><input type="checkbox"> Wardrobe</label>
+            <label><input type="checkbox"> Swimming Pool</label>
+            <label><input type="checkbox"> Fitness Center</label>
+            <label><input type="checkbox"> Elevator</label>
+            <label><input type="checkbox"> Balcony</label>
+            <label><input type="checkbox"> Garden</label>
+            <label><input type="checkbox"> CCTV</label>
+            <label><input type="checkbox"> 24/7 Security</label>
+            <label><input type="checkbox"> Fire Safety</label>
+
+        </div>
+    </div>
+
+    <!-- PARKING -->
+    <div class="filter-section">
+        <h3>Parking Options</h3>
+
+        <div class="amenities-grid">
+            <label><input type="checkbox"> Motorbike Parking</label>
+            <label><input type="checkbox"> Car Parking</label>
+            <label><input type="checkbox"> Private Parking</label>
+            <label><input type="checkbox"> Covered Parking</label>
+        </div>
+    </div>
+
+    <!-- PROPERTY RULES -->
+    <div class="filter-section">
+        <h3>Property Rules</h3>
+
+        <div class="filter-grid">
+
+            <div class="filter-group">
+                <label>Smoking Policy</label>
+                <select>
+                    <option>Any Policy</option>
+                    <option>No Smoking</option>
+                    <option>Smoking Allowed</option>
+                    <option>Outdoor Smoking Only</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Pet Policy</label>
+                <select>
+                    <option>Any Policy</option>
+                    <option>Pets Allowed</option>
+                    <option>No Pets Allowed</option>
+                    <option>Small Pets Only</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Guest Policy</label>
+                <select>
+                    <option>Any Policy</option>
+                    <option>Guests Allowed</option>
+                    <option>Limited Guests</option>
+                    <option>No Overnight Guests</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Noise Policy</label>
+                <select>
+                    <option>Any Policy</option>
+                    <option>Quiet Environment</option>
+                    <option>Quiet After 10 PM</option>
+                    <option>Flexible Rules</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="filter-buttons">
+        <button type="reset" class="reset-btn">
+            Reset All
+        </button>
+
+        <button type="submit" class="apply-btn">
+            Apply Filters
+        </button>
+    </div>
+
+</div>
+
+    </main>
+    <footer>
+        <div class="container-footer">
+            <div class="logo-footer">
+                <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+            </div>
+
+            <div class="text-left">
+                <div>
+                    <p>Slogan Safe:</p>
+                    <p>rooms, real photos, clear prices</p>
+                </div>
+
+                <div>
+                    <p>Address:</p>
+                    <p>Street 315, Boeung Kak 2, Toul Kork, Phnom Penh</p>
+                </div>
+
+                <div>
+                    <p>Opening hours:</p>
+                    <p>Monday to Saturday, 8:00 to 18:00</p>
+                </div>
+
+            </div>
+
+            <div class="text-right">
+                <div>
+                    <p>Phone:</p>
+                    <p>+855 123 456 789</p>
+                </div>
+                <div>
+                    <p>Email:</p>
+                    <p>hello@homehuntkh.example</p>
+                </div>
+
+                <div>
+                    <p>Company Name:</p>
+                    <p>Home Hunt KH</p>
+                </div>
+
+            </div>
+
+            <div class="line"></div>
+
+            <div class="container-footer-social">
+                <div><a href="#"><img src="/image/instagram.jpg" alt="instagram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/telegram.jpg"  alt="telegram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/facebook.jpg"  alt="facebook" style="width: 30px; height: 30px;"></a></div>
+                <div>&copy; Copyright. All right reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

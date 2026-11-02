@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/Picture/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.nav-bar-header a');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+            function setActive(activeLink) {
+                links.forEach(function (l) {
+                    l.classList.remove('active');
+                });
+                activeLink.classList.add('active');
+            }
+
+            links.forEach(function (link) {
+                // if the link goes to the page you are on, mark it active
+                if (link.getAttribute('href') === currentPage) {
+                    setActive(link);
+                }
+
+                // when you click a link, move the active style to it
+                link.addEventListener('click', function () {
+                    setActive(link);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!--Top of the website-->
+    <header>
+        <div class="container-header">
+
+            <div class="logo-icon-header">
+                <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+            </div>
+            
+            <div class="search-header">
+                <div class="icon-search">
+                    <img src="/image/icon search.jpg" alt="icon">
+                    <input type="text" placeholder="Search here">
+                </div>
+            </div>
+
+            <div class="nav-bar-header">
+                <a href="#" class="active" data-text="Home">Home</a>
+                <a href="#" data-text="Listings">Listings</a>
+                <a href="#" data-text="Book a Visit">Book a Visit</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!--Body of the website-->
+    <main>
+        <section>
+            <div class="container-main">
+                <div>
+                    <span  class="t1">Welcome to Home Hunt KH</span>
+                </div>
+                <div>
+                    <span  class="t2">Find Your</span>
+                    <span  class="t-2">Dream Home</span>
+                </div>
+                <div class="box-text-main">
+                    <span  class="t3">Discover your perfect home with comfort, style and the best location.
+                    </span>
+                    <span  class="t-3">Explore houses, aprtments and rooms to find right place for you.</span>
+                </div>
+                <div class="btn-main">
+                    <button onclick="window.location.href='#'">Book a Visit</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container-filter">
+                <span>Find a rental</span>
+                <div class="location-filter">
+                    <label for="location">Choose a Location:</label>
+                    <select id="location" name="location">
+                        <option value="">Select Location</option>
+                        <option value="phnom-penh">Phnom Penh</option>
+                        <option value="battambang">Battambang</option>
+                        <option value="siem-reap">Siem Reap</option>
+                        <option value="kampot">Kampot</option>
+                        <option value="kep">Kep</option>
+                        <option value="preas-sihaknuk">Preas Sihaknuk</option>
+                        <option value="koh-kong">Koh Kong</option>
+                        <option value="mundulkiri">Mundulkiri</option>
+                    </select>
+                </div>
+                <div class="monthly-filter">
+                    <label for="budget">Monthly Budget:</label>
+
+                    <select id="budget" name="budget">
+                        <option value="">Select Budget</option>
+                        <option value="49.99">$49.99 - $200</option>
+                        <option value="200">$200 - $500</option>
+                        <option value="500">$500 - $1,000</option>
+                        <option value="1000">$1,000 - $1,500</option>
+                        <option value="1500">$1,500 - $1,999</option>
+                    </select>
+                </div>
+                <div class="located-filter">
+                    <label for="location">Popular Locations:</label>
+
+                    <select id="location" name="location">
+                        <option value="">Select Location</option>
+                        <option value="boeung-kak">Boeung Kak</option>
+                        <option value="toul-kork">Toul Kork</option>
+                        <option value="bkk1">BKK1</option>
+                        <option value="russian-market">Russian Market</option>
+                        <option value="sen-sok">Sen Sok</option>
+                        <option value="chroy-changvar">Chroy Changvar</option>
+                        <option value="tuol-tom-poung">Tuol Tom Poung</option>
+                    </select>
+                </div>
+
+                <div class="search-main">
+                    <img src="/image/icon search.jpg" alt="search" style="  width: 24px;
+                    height: 24px;">
+                    <a href="#">Search</a>
+                </div>
+
+                <div class="filter-more">
+                    <img src="/image/filter.jpg" alt="more filters" style="  width: 24px;
+                    height: 24px;">
+                    <a href="more.html">More Filters</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container-features">
+                <div class="text-features">
+                    <h3>Featured Rooms</h3>
+                    <div class="line-feature"></div>
+                    <p> 
+                        Discover thoughtfully selected rooms and condos 
+                        that bring together comfort, style, and exceptional living.
+                    </p>
+                </div>
+                <div class="box1">
+                    <img src="image/pic1.jpg" alt="Picture1" style="width: auto; height: 190px;">
+                    <div class="tag1">
+                        <p>Toul Kork</p>
+                    </div>
+                    <p>Sunny Room near RUPP</p>
+                    <p>Room 20m2</p>
+                    <span>$150 /</span><p>month</p>
+                    <div class="button-box1">
+                        <a href="#">More Details</a>
+                    </div>
+                </div>
+
+                <div class="box2">
+                    <img src="image/pic4.jpg" alt="Picture4">
+                    <div class="tag2">
+                        <p>BKK1</p>
+                    </div>
+                    <p>City View Condo</p>
+                    <p>Room 45m2</p>
+                    <span>$450 /</span><p>month</p>
+                    <div class="button-box1">
+                        <a href="#">More Details</a>
+                    </div>
+                </div>
+
+                <div class="box3">
+                    <img src="/image/pic7.jpg" alt="Picture7">
+                    <div class="tag3">
+                        <p>Sen Sok</p>
+                    </div>
+                    <p>Family Condo</p>
+                    <p>Condo 80m2</p>
+                    <span>$380 /</span><p>month</p>
+                    <div class="button-box1">
+                        <a href="#">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container-trust">
+                <div class="text-trust">
+                    <h3>Why Trust Us?</h3>
+                    <div class="line-feature"></div>
+                    <p> 
+                        Find your next home with confidence.
+                    </p>
+                </div>
+                <div class="con1">
+                    <img src="/image/check.jpg" alt="Icon">
+                    <span>We Visit Every Room</span>
+                    <p>
+                        Ms. Sreyleak checks each room
+                        before it goes on our website.
+                    </p>
+                </div>
+
+                <div class="con2">
+                    <img src="/image/camera.jpg" alt="Icon">
+                    <span> Real Photos, Real Prices</span>
+                    <p>
+                        Our photos are up to date, and
+                        the listed price is the price you pay.
+                    </p>
+                </div>
+
+                <div class="con3">
+                    <img src="/image/calendar.jpg" alt="Icon">
+                    <span>Free Visits</span>
+                    <p>
+                        Book a visit for free.
+                        You pay nothing until you choose a room.
+                    </p>
+                </div>
+
+                <div class="con-find">
+                    <a href="#">Find Your Room</a>
+                    <p>Your perfect room is just one visit away.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!--Footer of the website-->
+     <footer>
+
+        <div class="container-footer">
+            <div class="logo-footer">
+                <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+            </div>
+
+            <div class="text-left">
+                <div>
+                    <p>Slogan Safe:</p>
+                    <p>rooms, real photos, clear prices</p>
+                </div>
+
+                <div>
+                    <p>Address:</p>
+                    <p>Street 315, Boeung Kak 2, Toul Kork, Phnom Penh</p>
+                </div>
+
+                <div>
+                    <p>Opening hours:</p>
+                    <p>Monday to Saturday, 8:00 to 18:00</p>
+                </div>
+
+            </div>
+
+            <div class="text-right">
+                <div>
+                    <p>Phone:</p>
+                    <p>+855 123 456 789</p>
+                </div>
+                <div>
+                    <p>Email:</p>
+                    <p>hello@homehuntkh.example</p>
+                </div>
+
+                <div>
+                    <p>Company Name:</p>
+                    <p>Home Hunt KH</p>
+                </div>
+
+            </div>
+
+            <div class="line"></div>
+
+            <div class="container-footer-social">
+                <div><a href="#"><img src="/image/instagram.jpg" alt="instagram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/telegram.jpg"  alt="telegram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/facebook.jpg"  alt="facebook" style="width: 30px; height: 30px;"></a></div>
+                <div>&copy; Copyright. All right reserved.</div>
+            </div>
+        </div>
+
+     </footer>
+</body>
+</html>
