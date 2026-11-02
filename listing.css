@@ -1,0 +1,369 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 1440px;
+    scroll-behavior: smooth;
+}
+/*Header of the website*/
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.container-header{
+     width: 1440px;
+    height: 70px;
+
+    background-color: #FBEBDF;
+
+    padding-left: 60px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.icon-search {
+    width: 340px;
+    height: 40px;
+    background-color: white;
+    border-radius: 30px;
+    padding-left: 50px;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.icon-search img {
+    width: 24px;
+    height: 24px;
+    }
+
+    .icon-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+}
+.nav-bar-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 16px;
+
+    margin-right: 150px;
+}
+
+.nav-bar-header a{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 0;
+
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.nav-bar-header a::before{
+    content: attr(data-text);
+    font-weight: 600;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+/* the line under the text */
+.nav-bar-header a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 2px;
+    background-color: #B4490B;          
+
+    transform: scaleX(0);               
+    transform-origin: left;             
+    transition: transform 0.3s ease;
+
+    margin-left: 29px;
+}
+
+/* on hover (and keyboard focus) */
+.nav-bar-header a:hover,
+.nav-bar-header a:focus-visible{
+    color: #B4490B;
+    font-weight: 600;
+}
+
+.nav-bar-header a:hover::after,
+.nav-bar-header a:focus-visible::after{
+    transform: scaleX(1);               
+}
+.nav-bar-header a.active{
+    color: #B4490B;
+    font-weight: 600;
+}
+
+.nav-bar-header a.active::after{
+    transform: scaleX(1);
+}
+/*Featured Room of the website*/
+.container-features{
+    width: 1204px;
+    margin: 120px 0 90px 75px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.container-features *{
+    width: auto;
+    overflow: visible;
+}
+
+.container-features .text-features{
+    grid-column: 1 / -1;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.container-features .text-features h3{
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #000;
+}
+
+.container-features .line-feature{
+    width: 360px;
+    height: 2px;
+    margin: 10px auto 24px auto;
+    background-color: #B4490B;
+}
+
+.container-features .text-features p{
+    max-width: 640px;
+    margin: 0 auto;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #000;
+}
+
+.container-features .room-card{
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.container-features .room-card img{
+    display: block;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+
+    background-color: #E9E1DA;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.container-features .room-tag{
+    align-self: flex-start;
+    margin-top: 12px;
+    padding: 2px 12px;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 11px;
+    color: #fff;
+
+    background-color: #B4490B;
+    border-radius: 20px;
+}
+
+.container-features .room-title{
+    margin-top: 8px;
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+}
+
+.container-features .room-info{
+    margin-top: 4px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    color: #555;
+}
+
+.container-features .room-price{
+    margin: 12px 0 18px 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 14px;
+    color: #000;
+}
+
+.container-features .room-price strong{
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.container-features .room-btn{
+    margin-top: auto;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #B4490B;
+
+    background-color: #fff;
+    border: 2px solid #B4490B;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.container-features .room-btn:hover{
+    background-color: #B4490B;
+    color: #fff;
+}
+
+@media (max-width: 1200px){
+    .container-features{
+        width: auto;
+        margin: 120px 16px 70px 16px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (max-width: 650px){
+    .container-features{
+        grid-template-columns: 1fr;
+    }
+
+    .container-features .text-features h3{
+        font-size: 30px;
+    }
+
+    .container-features .line-feature{
+        width: 240px;
+    }
+
+    .container-features .text-features p{
+        font-size: 16px;
+    }
+}
+/*Footer of the website*/
+footer{
+    width: 100%;
+    background-color: #FBEBDF;
+}
+
+footer .container-footer{
+    width: 1440px;
+    padding: 50px 60px 30px 60px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 440px);
+    align-items: start;
+}
+
+footer .container-footer *{
+    width: auto;
+    overflow: visible;
+}
+.logo-footer{
+    margin-left: 10px;
+}
+footer .container-footer .text-left{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+footer .container-footer .text-right{
+    display: grid;
+    grid-template-columns: max-content;
+    justify-content: end;
+    row-gap: 35px;
+    padding-right: 95px;
+}
+footer .container-footer p{
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    color: #000;
+    white-space: nowrap;
+}
+
+footer .container-footer p:first-child{
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-weight: 600;
+}
+
+footer .container-footer .line{
+    grid-column: 1 / -1;
+    height: 1px;
+    background-color: #52606D;
+    margin: 40px 18px 24px 0;
+}
+
+footer .container-footer .container-footer-social{
+    grid-column: 1 / -1;
+    margin-right: 18px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px 28px;
+}
+
+footer .container-footer .container-footer-social > div{
+    flex: 0 0 auto;
+}
+
+footer .container-footer .container-footer-social a{
+    display: block;
+    line-height: 0;
+}
+
+footer .container-footer .container-footer-social img{
+    display: block;
+    border-radius: 50%;
+}
+
+footer .container-footer .container-footer-social > div:last-child{
+    flex: 0 0 100%;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 11px;
+    color: #000;
+}

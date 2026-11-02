@@ -4,6 +4,7 @@
     box-sizing: border-box;
     overflow-x: hidden;
     width: 1440px;
+    scroll-behavior: smooth;
 }
 /*Header of the website*/
 header{
@@ -344,7 +345,7 @@ header{
 .container-filter .filter-more:hover{
     background-color: #FBEBDF;
 }
-/*Featured Room od the website*/
+/*Featured Room of the website*/
 .container-features{
     width: 1204px;
     margin: 90px 0 90px 75px;
