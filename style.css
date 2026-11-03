@@ -90,7 +90,7 @@ header{
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 60px;
+    width: 50px;
     height: 2px;
     background-color: #B4490B;          
 
@@ -98,7 +98,7 @@ header{
     transform-origin: left;             
     transition: transform 0.3s ease;
 
-    margin-left: 29px;
+    margin-left: 34px;
 }
 
 /* on hover (and keyboard focus) */

@@ -1,339 +1,469 @@
-/* =========================
-   GENERAL STYLES
-========================= */
-
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
+    width: 1440px;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Noto Sans', sans-serif;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #333333;
-    border-top: 3px solid #FBEBDF;
+input,
+select,
+button,
+textarea{
+    font-family: inherit;
 }
 
-.book-visit-container {
+h1, h2, h3, h4{
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+}
+/*Header of the website*/
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 1200px;
-    min-height: 435px;
-    margin: 0 auto;
-    padding: 45px 28px 30px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 45px;
+    z-index: 1000;
 }
+.container-header{
+     width: 1440px;
+    height: 70px;
 
+    background-color: #FBEBDF;
 
-/* =========================
-   LEFT SECTION
-========================= */
-
-.left-section {
-    width: 43%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-
-/* Calendar Icon */
-
-.calendar-icon {
-    width: 46px;
-    height: 43px;
+    padding-left: 60px;
 
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 
-    color: #B4490B;
-    font-size: 38px;
-
-    margin-bottom: 4px;
+}
+.icon-search {
+    width: 340px;
+    height: 40px;
+    background-color: white;
+    border-radius: 30px;
+    padding-left: 50px;
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
+.icon-search img {
+    width: 24px;
+    height: 24px;
+    }
 
-/* Title */
+    .icon-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+}
+.nav-bar-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
 
-.left-section h1 {
-    color: #B4490B;
-    font-size: 25px;
-    font-weight: 500;
-    margin-bottom: 8px;
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 16px;
+
+    margin-right: 150px;
 }
 
+.nav-bar-header a{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 0;
 
-/* Description */
-
-.description {
-    max-width: 390px;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #333333;
-    margin-bottom: 22px;
+    text-decoration: none;
+    color: #000;
+    transition: color 0.3s ease;
 }
 
-
-/* Bedroom Image */
-
-.bedroom-image {
-    width: 100%;
-    max-width: 430px;
-    aspect-ratio: 1 / 1;
-
-    border: 1px solid #B4490B;
-    border-radius: 50%;
-
+.nav-bar-header a::before{
+    content: attr(data-text);
+    font-weight: 600;
+    height: 0;
     overflow: hidden;
+    visibility: hidden;
 }
 
-.bedroom-image img {
-    width: 100%;
-    height: 100%;
+/* the line under the text */
+.nav-bar-header a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 2px;
+    background-color: #B4490B;          
 
-    display: block;
-    object-fit: cover;
-    object-position: center;
+    transform: scaleX(0);               
+    transform-origin: left;             
+    transition: transform 0.3s ease;
+
+    margin-left: 29px;
 }
 
+/* on hover (and keyboard focus) */
+.nav-bar-header a:hover,
+.nav-bar-header a:focus-visible{
+    color: #B4490B;
+    font-weight: 600;
+}
 
-/* =========================
-   RIGHT SECTION
-========================= */
+.nav-bar-header a:hover::after,
+.nav-bar-header a:focus-visible::after{
+    transform: scaleX(1);               
+}
+.nav-bar-header a.active{
+    color: #B4490B;
+    font-weight: 600;
+}
 
-.right-section {
-    width: 57%;
+.nav-bar-header a.active::after{
+    transform: scaleX(1);
+}
 
+/*Book a Visit*/
+.book-visit-container{
+    width: 1204px;
+    margin: 120px 0 90px 75px;
+
+    display: grid;
+    grid-template-columns: 1fr 600px;
+    column-gap: 64px;
+    align-items: start;
+}
+
+.book-visit-container *{
+    width: auto;
+    overflow: visible;
+}
+
+/* left side */
+.book-visit-container .left-section{
     display: flex;
     flex-direction: column;
-    gap: 20px;
-
-    padding-top: 10px;
+    align-items: flex-start;
 }
 
-
-/* Form Cards */
-
-.form-card {
-    width: 100%;
-    padding: 20px;
-
-    border: 1px solid #D99B7A;
-    border-radius: 9px;
-
-    background-color: #ffffff;
+.book-visit-container .calendar-icon i{
+    font-size: 56px;
+    color: #B4490B;
 }
 
+.book-visit-container .left-section h1{
+    margin-top: 10px;
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: #B4490B;
+}
 
-/* =========================
-   EMAIL FORM
-========================= */
+.book-visit-container .description{
+    max-width: 420px;
+    margin-top: 10px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #000;
+}
 
-.form-grid {
+.book-visit-container .bedroom-image{
+    margin-top: 28px;
+}
+
+.book-visit-container .bedroom-image img{
+    display: block;
+    width: 410px;
+    height: 410px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #B4490B;
+    border-radius: 50%;
+}
+
+/* right side */
+.book-visit-container .right-section{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.book-visit-container .form-card{
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #B4490B;
+    border-radius: 10px;
+}
+
+.book-visit-container .email-form .form-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px 20px;
+    gap: 18px 22px;
 }
 
+.book-visit-container .telegram-form{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
 
-/* Form Groups */
-
-.form-group {
-    width: 100%;
+.book-visit-container .form-group{
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-
-/* Labels */
-
-.form-group label {
+.book-visit-container .form-group label{
     display: flex;
     align-items: center;
-    gap: 7px;
-
-    font-size: 11px;
-    color: #222222;
-    font-weight: 500;
+    gap: 8px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
 }
 
-.form-group label i {
+.book-visit-container .form-group label i{
+    width: 16px;
+    text-align: center;
     color: #B4490B;
-    font-size: 15px;
 }
 
-
-/* Inputs and Select */
-
-.form-group input,
-.form-group select {
+.book-visit-container .form-group input,
+.book-visit-container .form-group select{
     width: 100%;
-    height: 40px;
+    height: 44px;
+    padding: 0 14px;
 
-    padding: 0 13px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    color: #000;
 
-    border: 1px solid #D99B7A;
-    border-radius: 11px;
-
+    background-color: #fff;
+    border: 1px solid #B4490B;
+    border-radius: 6px;
     outline: none;
-    background-color: #ffffff;
-
-    font-family: inherit;
-    font-size: 11px;
-    color: #555555;
-
-    transition: border-color 0.3s ease;
 }
 
-
-/* Placeholder */
-
-.form-group input::placeholder {
-    color: #999999;
+.book-visit-container .form-group input::placeholder{
+    color: #999;
 }
 
+.book-visit-container .form-group select{
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 40px;
 
-/* Focus Effect */
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #B4490B;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px 14px;
 }
 
+.book-visit-container .form-group select:required:invalid{
+    color: #999;
+}
 
-/* =========================
-   BUTTONS
-========================= */
+.book-visit-container .form-group input[type="date"]{
+    color: #555;
+    cursor: pointer;
+}
 
-.button-group {
+.book-visit-container .form-group input:focus,
+.book-visit-container .form-group select:focus{
+    box-shadow: 0 0 0 3px rgba(180, 73, 11, 0.25);
+}
+
+/* buttons */
+.book-visit-container .button-group{
     display: flex;
     align-items: flex-end;
 }
 
-.send-button {
+.book-visit-container .send-button{
     width: 100%;
-    height: 40px;
+    height: 44px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    gap: 10px;
 
-    border: none;
-    border-radius: 12px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 13px;
+    color: #fff;
 
     background-color: #8A3708;
-    color: #ffffff;
-
-    font-family: inherit;
-    font-size: 11px;
-
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
 }
 
-.send-button i {
-    font-size: 19px;
-}
-
-.send-button:hover {
+.book-visit-container .send-button:hover{
     background-color: #B4490B;
 }
 
+.book-visit-container .telegram-button{
+    height: 46px;
+    margin-top: 6px;
+}
 
-/* =========================
-   TELEGRAM FORM
-========================= */
+/*Footer of the website*/
+footer{
+    width: 100%;
+    background-color: #FBEBDF;
+}
 
-.telegram-form {
+footer .container-footer{
+    width: 1440px;
+    padding: 50px 60px 30px 60px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 440px);
+    align-items: start;
+}
+
+footer .container-footer *{
+    width: auto;
+    overflow: visible;
+}
+.logo-footer{
+    margin-left: 10px;
+}
+footer .container-footer .text-left{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 35px;
 }
 
-
-/* Telegram Button */
-
-.telegram-button {
-    margin-top: 3px;
+footer .container-footer .text-right{
+    display: grid;
+    grid-template-columns: max-content;
+    justify-content: end;
+    row-gap: 35px;
+    padding-right: 95px;
+}
+footer .container-footer p{
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 17px;
+    color: #000;
+    white-space: nowrap;
 }
 
+footer .container-footer p:first-child{
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-weight: 600;
+}
 
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
+footer .container-footer .line{
+    grid-column: 1 / -1;
+    height: 1px;
+    background-color: #52606D;
+    margin: 40px 18px 24px 0;
+}
 
-@media (max-width: 768px) {
+footer .container-footer .container-footer-social{
+    grid-column: 1 / -1;
+    margin-right: 18px;
 
-    .book-visit-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 30px 20px;
-        gap: 30px;
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px 28px;
+}
 
-    .left-section,
-    .right-section {
+footer .container-footer .container-footer-social > div{
+    flex: 0 0 auto;
+}
+
+footer .container-footer .container-footer-social a{
+    display: block;
+    line-height: 0;
+}
+
+footer .container-footer .container-footer-social img{
+    display: block;
+    border-radius: 50%;
+}
+
+footer .container-footer .container-footer-social > div:last-child{
+    flex: 0 0 100%;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 11px;
+    color: #000;
+}
+
+/*Tablet and phone*/
+@media (max-width: 1200px){
+    .container-header{
         width: 100%;
+        height: auto;
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 24px;
     }
 
-    .left-section {
-        align-items: center;
-        text-align: center;
+    .nav-bar-header{
+        margin-right: 0;
     }
 
-    .description {
-        max-width: 450px;
+    .book-visit-container{
+        width: auto;
+        margin: 150px 16px 60px 16px;
+        grid-template-columns: 1fr;
+        row-gap: 40px;
     }
 
-    .bedroom-image {
-        width: 75%;
-        max-width: 350px;
+    .book-visit-container .bedroom-image img{
+        width: 100%;
+        max-width: 410px;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
-    .right-section {
-        padding-top: 0;
+    footer .container-footer{
+        width: 100%;
+        padding: 36px 20px 24px 20px;
+        grid-template-columns: 1fr;
+        row-gap: 28px;
     }
 
-    .form-card {
+    footer .container-footer .text-right{
+        justify-content: start;
+        padding-right: 0;
+    }
+
+    footer .container-footer .line{
+        margin: 12px 0;
+    }
+}
+
+@media (max-width: 650px){
+    .book-visit-container .email-form .form-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .book-visit-container .form-card{
         padding: 18px;
     }
-
-}
-
-
-@media (max-width: 480px) {
-
-    .book-visit-container {
-        padding: 25px 15px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .form-card {
-        padding: 16px;
-    }
-
-    .left-section h1 {
-        font-size: 23px;
-    }
-
-    .bedroom-image {
-        width: 85%;
-    }
-
-    .form-group input,
-    .form-group select {
-        height: 42px;
-    }
-
 }

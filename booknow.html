@@ -9,9 +9,60 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/image/icon.png">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.nav-bar-header a');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+            function setActive(activeLink) {
+                links.forEach(function (l) {
+                    l.classList.remove('active');
+                });
+                activeLink.classList.add('active');
+            }
+
+            links.forEach(function (link) {
+                // if the link goes to the page you are on, mark it active
+                if (link.getAttribute('href') === currentPage) {
+                    setActive(link);
+                }
+
+                // when you click a link, move the active style to it
+                link.addEventListener('click', function () {
+                    setActive(link);
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
+        <header>
+            <div class="container-header">
+
+                <div class="logo-icon-header">
+                    <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+                </div>
+                
+                <div class="search-header">
+                    <div class="icon-search">
+                        <img src="/image/icon search.jpg" alt="icon">
+                        <input type="text" placeholder="Search here">
+                    </div>
+                </div>
+
+                <div class="nav-bar-header">
+                    <a href="index.html" class="active" data-text="Home">Home</a>
+                    <a href="listing.html" data-text="Listings">Listings</a>
+                    <a href="booknow.html" data-text="Book a Visit">Book a Visit</a>
+                </div>
+
+            </div>
+        </header>
 
     <main class="book-visit-container">
 
@@ -194,6 +245,58 @@
         </section>
 
     </main>
+<footer>
 
+        <div class="container-footer">
+            <div class="logo-footer">
+                <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+            </div>
+
+            <div class="text-left">
+                <div>
+                    <p>Slogan Safe:</p>
+                    <p>rooms, real photos, clear prices</p>
+                </div>
+
+                <div>
+                    <p>Address:</p>
+                    <p>Street 315, Boeung Kak 2, Toul Kork, Phnom Penh</p>
+                </div>
+
+                <div>
+                    <p>Opening hours:</p>
+                    <p>Monday to Saturday, 8:00 to 18:00</p>
+                </div>
+
+            </div>
+
+            <div class="text-right">
+                <div>
+                    <p>Phone:</p>
+                    <p>+855 123 456 789</p>
+                </div>
+                <div>
+                    <p>Email:</p>
+                    <p>hello@homehuntkh.example</p>
+                </div>
+
+                <div>
+                    <p>Company Name:</p>
+                    <p>Home Hunt KH</p>
+                </div>
+
+            </div>
+
+            <div class="line"></div>
+
+            <div class="container-footer-social">
+                <div><a href="#"><img src="/image/instagram.jpg" alt="instagram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/telegram.jpg"  alt="telegram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/facebook.jpg"  alt="facebook" style="width: 30px; height: 30px;"></a></div>
+                <div>&copy; Copyright. All right reserved.</div>
+            </div>
+        </div>
+
+     </footer>
 </body>
 </html>
