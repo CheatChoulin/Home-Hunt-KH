@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Hunt KH - Book a Visit</title>
+    <link rel="stylesheet" href="style-booknow.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="book-visit-container">
+
+        <!-- LEFT SECTION -->
+        <section class="left-section">
+
+            <div class="calendar-icon">
+                <i class="fa-regular fa-calendar-check"></i>
+            </div>
+
+            <h1>Book a Visit</h1>
+
+            <p class="description">
+                Find your perfect home with Home Hunt. Fill out the form below
+                to schedule a visit and explore your favorite property.
+                We're here to help you find a place you'll love to call home.
+            </p>
+
+            <div class="bedroom-image">
+                <img
+                    src="Pictures/1225439f-7d22-47d1-ad67-9767f32e167a.png"
+                    alt="Beautiful bedroom"
+                >
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SECTION -->
+        <section class="right-section">
+
+            <!-- EMAIL FORM -->
+            <form class="form-card email-form">
+
+                <div class="form-grid">
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="email-name">
+                            <i class="fa-regular fa-user"></i>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="email-name"
+                            name="name"
+                            placeholder="Enter Your Full Name"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                        <label for="email-phone">
+                            <i class="fa-solid fa-phone"></i>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="email-phone"
+                            name="phone"
+                            placeholder="Enter Your Phone Number"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Room -->
+                    <div class="form-group">
+                        <label for="room">
+                            <i class="fa-solid fa-bed"></i>
+                            Room
+                        </label>
+
+                        <select id="room" name="room" required>
+                            <option value="" selected disabled>
+                                Choose a Room
+                            </option>
+                            <option value="single-room">Single Room</option>
+                            <option value="double-room">Double Room</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="villa">Villa</option>
+                        </select>
+                    </div>
+
+
+                    <!-- Visit Date -->
+                    <div class="form-group">
+                        <label for="visit-date">
+                            <i class="fa-regular fa-calendar-days"></i>
+                            Visit Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="visit-date"
+                            name="visit-date"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="message">
+                            <i class="fa-solid fa-comment-dots"></i>
+                            Message
+                        </label>
+
+                        <input
+                            type="text"
+                            id="message"
+                            name="message"
+                            placeholder="Write Your Message here..."
+                        >
+                    </div>
+
+
+                    <!-- Email Button -->
+                    <div class="button-group">
+                        <button type="button" class="send-button">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Send To Email</span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <!-- TELEGRAM FORM -->
+            <form class="form-card telegram-form">
+
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="telegram-name">
+                        <i class="fa-regular fa-user"></i>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="telegram-name"
+                        name="telegram-name"
+                        placeholder="Enter Your Full Name"
+                        required
+                    >
+                </div>
+
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="telegram-phone">
+                        <i class="fa-solid fa-phone"></i>
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telegram-phone"
+                        name="telegram-phone"
+                        placeholder="Enter Your Phone Number"
+                        required
+                    >
+                </div>
+
+
+                <!-- Telegram Button -->
+                <button type="button" class="send-button telegram-button">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Send to Telegram</span>
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

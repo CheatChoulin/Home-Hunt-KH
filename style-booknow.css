@@ -1,0 +1,339 @@
+/* =========================
+   GENERAL STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+    border-top: 3px solid #FBEBDF;
+}
+
+.book-visit-container {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 435px;
+    margin: 0 auto;
+    padding: 45px 28px 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 45px;
+}
+
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.left-section {
+    width: 43%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+/* Calendar Icon */
+
+.calendar-icon {
+    width: 46px;
+    height: 43px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #B4490B;
+    font-size: 38px;
+
+    margin-bottom: 4px;
+}
+
+
+/* Title */
+
+.left-section h1 {
+    color: #B4490B;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+
+/* Description */
+
+.description {
+    max-width: 390px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333333;
+    margin-bottom: 22px;
+}
+
+
+/* Bedroom Image */
+
+.bedroom-image {
+    width: 100%;
+    max-width: 430px;
+    aspect-ratio: 1 / 1;
+
+    border: 1px solid #B4490B;
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+.bedroom-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* =========================
+   RIGHT SECTION
+========================= */
+
+.right-section {
+    width: 57%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding-top: 10px;
+}
+
+
+/* Form Cards */
+
+.form-card {
+    width: 100%;
+    padding: 20px;
+
+    border: 1px solid #D99B7A;
+    border-radius: 9px;
+
+    background-color: #ffffff;
+}
+
+
+/* =========================
+   EMAIL FORM
+========================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+
+/* Form Groups */
+
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+/* Labels */
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 11px;
+    color: #222222;
+    font-weight: 500;
+}
+
+.form-group label i {
+    color: #B4490B;
+    font-size: 15px;
+}
+
+
+/* Inputs and Select */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 13px;
+
+    border: 1px solid #D99B7A;
+    border-radius: 11px;
+
+    outline: none;
+    background-color: #ffffff;
+
+    font-family: inherit;
+    font-size: 11px;
+    color: #555555;
+
+    transition: border-color 0.3s ease;
+}
+
+
+/* Placeholder */
+
+.form-group input::placeholder {
+    color: #999999;
+}
+
+
+/* Focus Effect */
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #B4490B;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-group {
+    display: flex;
+    align-items: flex-end;
+}
+
+.send-button {
+    width: 100%;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    border: none;
+    border-radius: 12px;
+
+    background-color: #8A3708;
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 11px;
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.send-button i {
+    font-size: 19px;
+}
+
+.send-button:hover {
+    background-color: #B4490B;
+}
+
+
+/* =========================
+   TELEGRAM FORM
+========================= */
+
+.telegram-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* Telegram Button */
+
+.telegram-button {
+    margin-top: 3px;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 768px) {
+
+    .book-visit-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 20px;
+        gap: 30px;
+    }
+
+    .left-section,
+    .right-section {
+        width: 100%;
+    }
+
+    .left-section {
+        align-items: center;
+        text-align: center;
+    }
+
+    .description {
+        max-width: 450px;
+    }
+
+    .bedroom-image {
+        width: 75%;
+        max-width: 350px;
+    }
+
+    .right-section {
+        padding-top: 0;
+    }
+
+    .form-card {
+        padding: 18px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .book-visit-container {
+        padding: 25px 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .form-card {
+        padding: 16px;
+    }
+
+    .left-section h1 {
+        font-size: 23px;
+    }
+
+    .bedroom-image {
+        width: 85%;
+    }
+
+    .form-group input,
+    .form-group select {
+        height: 42px;
+    }
+
+}
