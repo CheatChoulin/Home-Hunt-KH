@@ -181,17 +181,21 @@ header{
 }
 
 .book-visit-container .bedroom-image{
+    width: 410px;
+    height: 410px;
     margin-top: 28px;
+
+    border: 1px solid #B4490B;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 .book-visit-container .bedroom-image img{
     display: block;
-    width: 410px;
-    height: 410px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
-    border: 1px solid #B4490B;
-    border-radius: 50%;
 }
 
 /* right side */

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>City view condo</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/pro-style.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/Picture/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.nav-bar-header a');
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+            function setActive(activeLink) {
+                links.forEach(function (l) {
+                    l.classList.remove('active');
+                });
+                activeLink.classList.add('active');
+            }
+
+            links.forEach(function (link) {
+                // if the link goes to the page you are on, mark it active
+                if (link.getAttribute('href') === currentPage) {
+                    setActive(link);
+                }
+
+                // when you click a link, move the active style to it
+                link.addEventListener('click', function () {
+                    setActive(link);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!--Top of the website-->
+    <header>
+        <div class="container-header">
+
+            <div class="logo-icon-header">
+                <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+            </div>
+            
+            <div class="search-header">
+                <div class="icon-search">
+                    <img src="/image/icon search.jpg" alt="icon">
+                    <input type="text" placeholder="Search here">
+                </div>
+            </div>
+
+            <div class="nav-bar-header">
+                <a href="index.html" class="active" data-text="Home">Home</a>
+                <a href="listing.html" data-text="Listings">Listings</a>
+                <a href="booknow.html" data-text="Book a Visit">Book a Visit</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- PROPERTY DETAILS -->
+    <main class="container">
+
+        <!-- LEFT SIDE: ROOM GALLERY -->
+        
+        <div class="gallery">
+            <h3>Room Gallery</h3>
+
+            <!-- Radio buttons -->
+            <input type="radio" name="room" id="room1" checked>
+            <input type="radio" name="room" id="room2">
+            <input type="radio" name="room" id="room3">
+            <input type="radio" name="room" id="room4">
+
+        <div class="slider">
+
+        <!-- Image 1 -->  
+        <div class="slide slide1">
+            <img src="/Images/city1.jpeg" alt="Room 1">
+
+            <label for="room4" class="arrow prev">❮</label>
+            <label for="room2" class="arrow next">❯</label>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="slide slide2">
+            <img src="/Images/city2.jpeg" alt="Room 2">
+
+            <label for="room1" class="arrow prev">❮</label>
+            <label for="room3" class="arrow next">❯</label>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="slide slide3">
+            <img src="/Images/city3.jpeg" alt="Room 3">
+
+            <label for="room2" class="arrow prev">❮</label>
+            <label for="room4" class="arrow next">❯</label>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="slide slide4">
+            <img src="/Images/city4.jpeg" alt="Room 4">
+
+            <label for="room3" class="arrow prev">❮</label>
+            <label for="room1" class="arrow next">❯</label>
+        </div>
+
+    </div>
+
+            <h3 class="more-title">More Photos</h3>
+
+            <div class="small-images">
+                <img
+                    src="/Images/city5.jpeg"
+                    alt="Living room">
+
+                <img
+                    src="/Images/city6.jpeg"
+                    alt="Bedroom">
+
+                <img
+                    src="/Images/city7.jpeg"
+                    alt="Apartment room">
+            </div>
+
+            <!-- INCLUDED FACILITIES -->
+            <div class="included-box">
+                <div class="home-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+
+                <div class="included-text">
+                    <h4>All rooms include:</h4>
+                    <p>
+                        Free Wi-Fi, water, a bed and a fan or air conditioner.
+                        Electricity is paid each month (about 0.25 USD per kWh).
+                    </p>
+                </div>
+            </div>
+</div>
+
+
+
+        </section>
+
+        <!-- RIGHT SIDE: PROPERTY INFORMATION -->
+        <section class="details card">
+
+            <p class="property-code">HH-04 · ROOM FOR RENT</p>
+
+            <h2>City view condo</h2>
+
+            <p class="location">
+                <i class="fa-solid fa-location-dot"></i>
+                BKK1, Phnom Penh
+            </p>
+            <!-- RENT -->
+            <div class="rent-box">
+                <h4>Monthly Rent</h4>
+                <p>
+                    <strong>$450</strong>
+                    <span>/ month</span>
+                </p>
+            </div>
+
+            <!-- PROPERTY OVERVIEW -->
+            <h3>Property Overview</h3>
+
+            <div class="info-row">
+                <div class="round-icon">
+                    <i class="fa-solid fa-ruler"></i>
+                </div>
+
+                <div>
+                    <h4>Room size</h4>
+                    <p>40m<sup>2</sup></p>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="round-icon">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+
+                <div>
+                    <h4>Property type</h4>
+                    <p>Condo</p>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="round-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <h4>Maximum Occupancy</h4>
+                    <p>3 People</p>
+                </div>
+            </div>
+
+            <!-- ROOM RULES -->
+            <h3 class="rules-title">Room Rules</h3>
+
+            <div class="rule-row">
+                <div class="round-icon">
+                    <i class="fa-solid fa-ban-smoking"></i>
+                </div>
+                <p>No smoking</p>
+            </div>
+
+            <div class="rule-row">
+                <div class="round-icon">
+                    <i class="fa-solid fa-music"></i>
+                </div>
+                <p>No parties</p>
+            </div>
+
+            <div class="rule-row">
+                <div class="round-icon">
+                    <i class="fa-solid fa-user-group"></i>
+            </div>
+                <p>Maximum 3 people</p>
+            </div>
+
+            <button class="book-button" onclick="window.location.href='booknow.html'">
+                Book a Visit
+            </button>
+
+        </section>
+
+    </main>
+
+   <!--Footer of the website-->
+     <footer>
+
+        <div class="container-footer">
+            <div class="logo-footer">
+                <img src="/image/logo.png" alt="logo" style="width: 231px; height: 47px;">
+            </div>
+
+            <div class="text-left">
+                <div>
+                    <p>Slogan Safe:</p>
+                    <p>rooms, real photos, clear prices</p>
+                </div>
+
+                <div>
+                    <p>Address:</p>
+                    <p>Street 315, Boeung Kak 2, Toul Kork, Phnom Penh</p>
+                </div>
+
+                <div>
+                    <p>Opening hours:</p>
+                    <p>Monday to Saturday, 8:00 to 18:00</p>
+                </div>
+
+            </div>
+
+            <div class="text-right">
+                <div>
+                    <p>Phone:</p>
+                    <p>+855 123 456 789</p>
+                </div>
+                <div>
+                    <p>Email:</p>
+                    <p>hello@homehuntkh.example</p>
+                </div>
+
+                <div>
+                    <p>Company Name:</p>
+                    <p>Home Hunt KH</p>
+                </div>
+
+            </div>
+
+            <div class="line"></div>
+
+            <div class="container-footer-social">
+                <div><a href="#"><img src="/image/instagram.jpg" alt="instagram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/telegram.jpg"  alt="telegram" style="width: 30px; height: 30px;"></a></div>
+                <div><a href="#"><img src="/image/facebook.jpg"  alt="facebook" style="width: 30px; height: 30px;"></a></div>
+                <div>&copy; Copyright. All right reserved.</div>
+            </div>
+        </div>
+
+     </footer>
+
+
+</body>
+</html>
