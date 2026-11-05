@@ -56,15 +56,23 @@
                 </div>
 
                 <div class="nav-bar-header">
-                    <a href="index.html" class="active" data-text="Home">Home</a>
+                    <a href="index.html" data-text="Home">Home</a>
                     <a href="listing.html" data-text="Listings">Listings</a>
-                    <a href="booknow.html" data-text="Book a Visit">Book a Visit</a>
+                    <a href="booknow.html" class="active" data-text="Book a Visit">Book a Visit</a>
                 </div>
 
             </div>
         </header>
 
     <main class="book-visit-container">
+
+        <!-- Back button: goes to the page the visitor came from (falls back to Listings) -->
+        <div class="back-bar">
+            <a href="listing.html" class="back-button" onclick="if (history.length > 1) { history.back(); return false; }">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+                <span>Back</span>
+            </a>
+        </div>
 
         <!-- LEFT SECTION -->
         <section class="left-section">

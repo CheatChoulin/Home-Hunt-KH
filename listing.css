@@ -1,67 +1,178 @@
-*{
+/* ==========================================================
+   LISTING PAGE - RESPONSIVE + ALIGNED STYLESHEET
+   One shared content width (--max) and one shared side gutter
+   (--edge) are used by the header, hero text, filter, rooms,
+   trust section and footer, so every section starts and ends
+   on the same left / right line on every screen size.
+
+   Needs this in the <head> of every HTML page:
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   ========================================================== */
+
+:root{
+    --brand: #B4490B;
+    --brand-dark: #8A3708;
+    --cream: #FBEBDF;
+
+    --max: 1290px;                         /* content width on big screens   */
+    --edge: clamp(16px, 5.2vw, 75px);      /* side gutter                    */
+    --header-h: 70px;                      /* header height (grows on phones)*/
+    --logo-shift: -10px;                   /* nudge logo left/right to line up (0 = none) */
+
+    /* side padding for FULL-WIDTH bars (header, hero, footer):
+       centres the content at --max and never goes below --edge */
+    --pad: max(var(--edge), calc((100% - var(--max)) / 2));
+    /* width + centring for BOXED sections (filter, rooms, trust) */
+    --box: min(var(--max), calc(100% - 2 * var(--edge)));
+}
+
+*,
+*::before,
+*::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
-    width: 1440px;
-    scroll-behavior: smooth;
 }
-/*Header of the website*/
+
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 10px);
+    -webkit-text-size-adjust: 100%;
+}
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+button, input, select{
+    font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior: auto !important; transition: none !important; }
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
 header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    background-color: var(--cream);
 }
+
 .container-header{
-     width: 1440px;
-    height: 70px;
-
-    background-color: #FBEBDF;
-
-    padding-left: 60px;
+    width: 100%;
+    min-height: var(--header-h);
+    padding: 0 var(--pad);
+    background-color: var(--cream);
 
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-
+    gap: 12px 24px;
 }
-.icon-search {
-    width: 340px;
-    height: 40px;
-    background-color: white;
-    border-radius: 30px;
-    padding-left: 50px;
-    padding-right: 24px;
+
+.container-header > *:first-child{ flex: 0 0 auto; }
+
+/* logo (icon + name) in the header and footer: same size rules, scales with the screen */
+.logo-icon-header,
+.logo-footer{
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: clamp(6px, 0.8vw, 10px);
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.logo-icon-header a,
+.logo-footer a{
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
-.icon-search img {
+.logo-icon-header img,
+.logo-footer img{
+    display: block;
+    width: auto !important;
+    max-width: none;
+    height: clamp(30px, 3.3vw, 47px) !important;
+    margin: 0 0 0 var(--logo-shift);
+    padding: 0;
+}
+
+.logo-icon-header :is(span, p, h1, h2, h3),
+footer .container-footer .logo-footer :is(span, p, h1, h2, h3){
+    margin: 0;
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: clamp(17px, 1.6vw, 22px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--brand);
+    white-space: nowrap;
+}
+
+.search-header{
+    flex: 0 1 340px;
+    min-width: 0;
+}
+
+.icon-search{
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    padding: 0 24px 0 20px;
+
+    background-color: #fff;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.icon-search img{
+    flex: 0 0 auto;
     width: 24px;
     height: 24px;
-    }
+}
 
-    .icon-search input {
+.icon-search input{
     flex: 1;
+    min-width: 0;
     border: none;
     outline: none;
     background: transparent;
     font-size: 13px;
 }
+
 .nav-bar-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 30px;
+    margin: 0;
 
     font-family: 'Poppins', 'Noto Sans', sans-serif;
     font-size: 16px;
-
-    margin-right: 150px;
 }
 
 .nav-bar-header a{
@@ -73,9 +184,11 @@ header{
 
     text-decoration: none;
     color: #000;
+    white-space: nowrap;
     transition: color 0.3s ease;
 }
 
+/* invisible bold copy of the text: stops the menu jumping when it turns bold */
 .nav-bar-header a::before{
     content: attr(data-text);
     font-weight: 600;
@@ -84,82 +197,126 @@ header{
     visibility: hidden;
 }
 
-/* the line under the text */
+/* line under the text (centred, as wide as the text) */
 .nav-bar-header a::after{
     content: "";
     position: absolute;
     left: 0;
+    right: 0;
     bottom: 0;
-    width: 60px;
     height: 2px;
-    background-color: #B4490B;          
+    background-color: var(--brand);
 
-    transform: scaleX(0);               
-    transform-origin: left;             
+    transform: scaleX(0);
+    transform-origin: center;
     transition: transform 0.3s ease;
-
-    margin-left: 29px;
 }
 
-/* on hover (and keyboard focus) */
 .nav-bar-header a:hover,
-.nav-bar-header a:focus-visible{
-    color: #B4490B;
+.nav-bar-header a:focus-visible,
+.nav-bar-header a.active{
+    color: var(--brand);
     font-weight: 600;
 }
 
 .nav-bar-header a:hover::after,
-.nav-bar-header a:focus-visible::after{
-    transform: scaleX(1);               
-}
-.nav-bar-header a.active{
-    color: #B4490B;
-    font-weight: 600;
-}
-
+.nav-bar-header a:focus-visible::after,
 .nav-bar-header a.active::after{
     transform: scaleX(1);
 }
-/*Featured Room of the website*/
+
+/* header: logo + search on the first row, menu on its own row */
+@media (max-width: 900px){
+    :root{ --header-h: 118px; }
+
+    .container-header{
+        padding-top: 10px;
+        padding-bottom: 8px;
+        flex-wrap: wrap;
+    }
+    .search-header{
+        flex: 1 1 180px;
+        max-width: 340px;
+    }
+    .nav-bar-header{
+        order: 3;
+        flex: 0 0 100%;
+        justify-content: flex-start;
+        gap: 22px;
+        font-size: 14px;
+
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+    }
+    .nav-bar-header::-webkit-scrollbar{ display: none; }
+}
+
+@media (max-width: 480px){
+    .icon-search{ height: 38px; gap: 10px; padding: 0 14px; }
+    .nav-bar-header{ gap: 18px; font-size: 13px; }
+}
+
+@media (max-width: 360px){
+    .search-header{ flex-basis: 120px; }
+    .icon-search{ padding: 0 12px; gap: 8px; }
+    .nav-bar-header{ gap: 14px; font-size: 12.5px; }
+}
+
+/* phone turned sideways: header scrolls away instead of covering the screen */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 900px){
+    header{ position: absolute; }
+}
+
+@media (hover: none) and (pointer: coarse){
+    .nav-bar-header a{ padding: 8px 0; }
+}
+
+
+/* ==========================================================
+   LISTING ROOMS
+   3 columns -> 2 columns -> 1 column. Cards are all the same
+   height and the "More Detail" button always sits at the bottom.
+   (No hero on this page, so the top margin clears the header.)
+   ========================================================== */
 .container-features{
-    width: 1204px;
-    margin: 120px 0 90px 75px;
+    --fgap: clamp(20px, 2.8vw, 40px);
+
+    width: var(--box);
+    margin: calc(var(--header-h) + clamp(30px, 3.5vw, 50px)) auto clamp(56px, 6.3vw, 90px);
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--fgap);
 }
 
-.container-features *{
-    width: auto;
-    overflow: visible;
-}
+.container-features > *{ min-width: 0; }
 
 .container-features .text-features{
     grid-column: 1 / -1;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
 .container-features .text-features h3{
     font-family: 'Poppins', 'Noto Sans', sans-serif;
-    font-size: 40px;
+    font-size: clamp(24px, 2.8vw, 40px);
     font-weight: 700;
     color: #000;
 }
 
 .container-features .line-feature{
-    width: 360px;
+    width: min(360px, 80%);
     height: 2px;
-    margin: 10px auto 24px auto;
-    background-color: #B4490B;
+    margin: 10px auto 24px;
+    background-color: var(--brand);
 }
 
 .container-features .text-features p{
     max-width: 640px;
     margin: 0 auto;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 20px;
+    font-size: clamp(15px, 1.4vw, 20px);
     line-height: 1.5;
     color: #000;
 }
@@ -174,11 +331,13 @@ header{
     border-radius: 8px;
 }
 
+.container-features .room-card > *{ overflow-wrap: anywhere; }
+
 .container-features .room-card img{
     display: block;
-    width: 100%;
-    height: 190px;
-    overflow: hidden;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: clamp(180px, 14vw, 200px) !important;
     object-fit: cover;
     object-position: center;
 
@@ -196,14 +355,14 @@ header{
     font-size: 11px;
     color: #fff;
 
-    background-color: #B4490B;
+    background-color: var(--brand);
     border-radius: 20px;
 }
 
 .container-features .room-title{
     margin-top: 8px;
     font-family: 'Poppins', 'Noto Sans', sans-serif;
-    font-size: 22px;
+    font-size: clamp(19px, 1.6vw, 22px);
     font-weight: 600;
     color: #000;
 }
@@ -216,7 +375,7 @@ header{
 }
 
 .container-features .room-price{
-    margin: 12px 0 18px 0;
+    margin: 12px 0 18px;
     font-family: 'Noto Sans', sans-serif;
     font-size: 14px;
     color: #000;
@@ -224,13 +383,13 @@ header{
 
 .container-features .room-price strong{
     font-family: 'Poppins', 'Noto Sans', sans-serif;
-    font-size: 24px;
+    font-size: clamp(21px, 1.7vw, 24px);
     font-weight: 700;
 }
 
 .container-features .room-btn{
     margin-top: auto;
-    height: 46px;
+    min-height: 46px;
 
     display: flex;
     align-items: center;
@@ -240,70 +399,58 @@ header{
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    color: #B4490B;
+    color: var(--brand);
 
     background-color: #fff;
-    border: 2px solid #B4490B;
+    border: 2px solid var(--brand);
     border-radius: 8px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .container-features .room-btn:hover{
-    background-color: #B4490B;
+    background-color: var(--brand);
     color: #fff;
 }
 
-@media (max-width: 1200px){
-    .container-features{
-        width: auto;
-        margin: 120px 16px 70px 16px;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
+@media (max-width: 1023px){
+    .container-features{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 650px){
-    .container-features{
-        grid-template-columns: 1fr;
-    }
-
-    .container-features .text-features h3{
-        font-size: 30px;
-    }
-
-    .container-features .line-feature{
-        width: 240px;
-    }
-
-    .container-features .text-features p{
-        font-size: 16px;
-    }
+    .container-features{ grid-template-columns: 1fr; }
+    .container-features .line-feature{ width: min(240px, 70%); }
 }
+
+@media (hover: none) and (pointer: coarse){
+    .container-features .room-btn{ min-height: 48px; }
+}
+
+/* message shown when a search/filter finds nothing */
 .container-features .no-results{
     grid-column: 1 / -1;
-    padding: 60px 20px;
+    padding: clamp(36px, 5vw, 60px) 20px;
     text-align: center;
-    border: 1px dashed #B4490B;
+    border: 1px dashed var(--brand);
     border-radius: 8px;
 }
 
 .container-features .no-results h4{
     font-family: 'Poppins', 'Noto Sans', sans-serif;
-    font-size: 24px;
+    font-size: clamp(19px, 2vw, 24px);
     font-weight: 600;
 }
 
 .container-features .no-results p{
-    margin: 10px 0 24px 0;
+    margin: 10px 0 24px;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 16px;
+    font-size: clamp(14px, 1.2vw, 16px);
     color: #555;
 }
 
 .container-features .no-results a{
     display: inline-flex;
     align-items: center;
-    height: 46px;
+    min-height: 46px;
     padding: 0 28px;
 
     font-family: 'Poppins', 'Noto Sans', sans-serif;
@@ -311,13 +458,12 @@ header{
     text-decoration: none;
     color: #fff;
 
-    background: #B4490B;
+    background: var(--brand);
     border-radius: 8px;
 }
 
-.container-features .room-card.fade-in{
-    animation: cardFade 0.35s ease;
-}
+/* cards fade in when the list is filtered */
+.container-features .room-card.fade-in{ animation: cardFade 0.35s ease; }
 
 @keyframes cardFade{
     from{ opacity: 0; transform: translateY(8px); }
@@ -325,32 +471,32 @@ header{
 }
 
 @media (prefers-reduced-motion: reduce){
-    .container-features .room-card.fade-in{
-        animation: none;
-    }
+    .container-features .room-card.fade-in{ animation: none; }
 }
-/*Footer of the website*/
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
 footer{
     width: 100%;
-    background-color: #FBEBDF;
+    background-color: var(--cream);
 }
 
 footer .container-footer{
-    width: 1440px;
-    padding: 50px 60px 30px 60px;
+    width: 100%;
+    padding: 50px var(--pad) 30px;
 
     display: grid;
-    grid-template-columns: repeat(3, 440px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
     align-items: start;
 }
 
-footer .container-footer *{
-    width: auto;
-    overflow: visible;
-}
-.logo-footer{
-    margin-left: 10px;
-}
+footer .container-footer > *{ min-width: 0; }
+
+.logo-footer{ margin-left: 0; }
+
 footer .container-footer .text-left{
     display: flex;
     flex-direction: column;
@@ -362,14 +508,14 @@ footer .container-footer .text-right{
     grid-template-columns: max-content;
     justify-content: end;
     row-gap: 35px;
-    padding-right: 95px;
 }
+
 footer .container-footer p{
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
     font-size: 17px;
     color: #000;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
 }
 
 footer .container-footer p:first-child{
@@ -380,13 +526,12 @@ footer .container-footer p:first-child{
 footer .container-footer .line{
     grid-column: 1 / -1;
     height: 1px;
+    margin: 40px 0 24px;
     background-color: #52606D;
-    margin: 40px 18px 24px 0;
 }
 
 footer .container-footer .container-footer-social{
     grid-column: 1 / -1;
-    margin-right: 18px;
 
     display: flex;
     flex-direction: row;
@@ -396,9 +541,7 @@ footer .container-footer .container-footer-social{
     gap: 14px 28px;
 }
 
-footer .container-footer .container-footer-social > div{
-    flex: 0 0 auto;
-}
+footer .container-footer .container-footer-social > div{ flex: 0 0 auto; }
 
 footer .container-footer .container-footer-social a{
     display: block;
@@ -416,4 +559,29 @@ footer .container-footer .container-footer-social > div:last-child{
     font-family: 'Noto Sans', sans-serif;
     font-size: 11px;
     color: #000;
+}
+
+@media (max-width: 1023px){
+    footer .container-footer p{ font-size: 15px; }
+    footer .container-footer .text-left{ gap: 24px; }
+    footer .container-footer .text-right{ row-gap: 24px; }
+}
+
+@media (max-width: 768px){
+    footer .container-footer{
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+        padding-top: 40px;
+    }
+    footer .container-footer .text-right{ justify-content: start; }
+    footer .container-footer .line{ margin: 10px 0; }
+    footer .container-footer .container-footer-social{ gap: 14px 22px; }
+}
+
+@media (max-width: 480px){
+    footer .container-footer{ row-gap: 22px; }
+    footer .container-footer p{ font-size: 14px; }
+    footer .container-footer .text-left,
+    footer .container-footer .text-right{ gap: 18px; row-gap: 18px; }
+    footer .container-footer .container-footer-social > div:last-child{ font-size: 10.5px; }
 }

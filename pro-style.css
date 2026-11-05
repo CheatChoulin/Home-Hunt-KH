@@ -1,12 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Poppins:wght@400;600;700;800&display=swap');
 
-*{
+/* ==========================================================
+   PROPERTY PAGES (pro1-pro10) - RESPONSIVE + ALIGNED STYLESHEET
+   One shared content width (--max) and one shared side gutter
+   (--edge) are used by the header, hero text, filter, rooms,
+   trust section and footer, so every section starts and ends
+   on the same left / right line on every screen size.
+
+   Needs this in the <head> of every HTML page:
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   ========================================================== */
+
+:root{
+    --brand: #B4490B;
+    --brand-dark: #8A3708;
+    --cream: #FBEBDF;
+
+    --max: 1290px;                         /* content width on big screens   */
+    --edge: clamp(16px, 5.2vw, 75px);      /* side gutter                    */
+    --header-h: 70px;                      /* header height (grows on phones)*/
+    --logo-shift: -10px;                   /* nudge logo left/right to line up (0 = none) */
+
+    /* side padding for FULL-WIDTH bars (header, hero, footer):
+       centres the content at --max and never goes below --edge */
+    --pad: max(var(--edge), calc((100% - var(--max)) / 2));
+    /* width + centring for BOXED sections (filter, rooms, trust) */
+    --box: min(var(--max), calc(100% - 2 * var(--edge)));
+}
+
+*,
+*::before,
+*::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
-    width: 1440px;
+}
+
+html{
     scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 10px);
+    -webkit-text-size-adjust: 100%;
+}
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+button, input, select, textarea{
+    font: inherit;
 }
 
 body{
@@ -20,73 +68,128 @@ a{
     color: inherit;
 }
 
-button,
-input,
-select,
-textarea{
-    font-family: inherit;
-}
-
 h1, h2, h3, h4{
     font-family: 'Poppins', 'Noto Sans', sans-serif;
 }
 
-/*Header of the website*/
+@media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior: auto !important; transition: none !important; }
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
 header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    background-color: var(--cream);
 }
+
 .container-header{
-     width: 1440px;
-    height: 70px;
-
-    background-color: #FBEBDF;
-
-    padding-left: 60px;
+    width: 100%;
+    min-height: var(--header-h);
+    padding: 0 var(--pad);
+    background-color: var(--cream);
 
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-
+    gap: 12px 24px;
 }
-.icon-search {
-    width: 340px;
-    height: 40px;
-    background-color: white;
-    border-radius: 30px;
-    padding-left: 50px;
-    padding-right: 24px;
+
+.container-header > *:first-child{ flex: 0 0 auto; }
+
+/* logo (icon + name) in the header and footer: same size rules, scales with the screen */
+.logo-icon-header,
+.logo-footer{
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: clamp(6px, 0.8vw, 10px);
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.logo-icon-header a,
+.logo-footer a{
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
-.icon-search img {
+.logo-icon-header img,
+.logo-footer img{
+    display: block;
+    width: auto !important;
+    max-width: none;
+    height: clamp(30px, 3.3vw, 47px) !important;
+    margin: 0 0 0 var(--logo-shift);
+    padding: 0;
+}
+
+.logo-icon-header :is(span, p, h1, h2, h3),
+footer .container-footer .logo-footer :is(span, p, h1, h2, h3){
+    margin: 0;
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: clamp(17px, 1.6vw, 22px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--brand);
+    white-space: nowrap;
+}
+
+.search-header{
+    flex: 0 1 340px;
+    min-width: 0;
+}
+
+.icon-search{
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+    padding: 0 24px 0 20px;
+
+    background-color: #fff;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.icon-search img{
+    flex: 0 0 auto;
     width: 24px;
     height: 24px;
-    }
+}
 
-    .icon-search input {
+.icon-search input{
     flex: 1;
+    min-width: 0;
     border: none;
     outline: none;
     background: transparent;
     font-size: 13px;
 }
+
 .nav-bar-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 30px;
+    margin: 0;
 
     font-family: 'Poppins', 'Noto Sans', sans-serif;
     font-size: 16px;
-
-    margin-right: 150px;
 }
 
 .nav-bar-header a{
@@ -98,9 +201,11 @@ header{
 
     text-decoration: none;
     color: #000;
+    white-space: nowrap;
     transition: color 0.3s ease;
 }
 
+/* invisible bold copy of the text: stops the menu jumping when it turns bold */
 .nav-bar-header a::before{
     content: attr(data-text);
     font-weight: 600;
@@ -109,90 +214,126 @@ header{
     visibility: hidden;
 }
 
-/* the line under the text */
+/* line under the text (centred, as wide as the text) */
 .nav-bar-header a::after{
     content: "";
     position: absolute;
     left: 0;
+    right: 0;
     bottom: 0;
-    width: 60px;
     height: 2px;
-    background-color: #B4490B;          
+    background-color: var(--brand);
 
-    transform: scaleX(0);               
-    transform-origin: left;             
+    transform: scaleX(0);
+    transform-origin: center;
     transition: transform 0.3s ease;
-
-    margin-left: 29px;
 }
 
-/* on hover (and keyboard focus) */
 .nav-bar-header a:hover,
-.nav-bar-header a:focus-visible{
-    color: #B4490B;
+.nav-bar-header a:focus-visible,
+.nav-bar-header a.active{
+    color: var(--brand);
     font-weight: 600;
 }
 
 .nav-bar-header a:hover::after,
-.nav-bar-header a:focus-visible::after{
-    transform: scaleX(1);               
-}
-.nav-bar-header a.active{
-    color: #B4490B;
-    font-weight: 600;
-}
-
+.nav-bar-header a:focus-visible::after,
 .nav-bar-header a.active::after{
     transform: scaleX(1);
 }
 
-/*Property page: same edges as the header (left 75px, width 1204px)*/
+/* header: logo + search on the first row, menu on its own row */
+@media (max-width: 900px){
+    :root{ --header-h: 118px; }
+
+    .container-header{
+        padding-top: 10px;
+        padding-bottom: 8px;
+        flex-wrap: wrap;
+    }
+    .search-header{
+        flex: 1 1 180px;
+        max-width: 340px;
+    }
+    .nav-bar-header{
+        order: 3;
+        flex: 0 0 100%;
+        justify-content: flex-start;
+        gap: 22px;
+        font-size: 14px;
+
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+    }
+    .nav-bar-header::-webkit-scrollbar{ display: none; }
+}
+
+@media (max-width: 480px){
+    .icon-search{ height: 38px; gap: 10px; padding: 0 14px; }
+    .nav-bar-header{ gap: 18px; font-size: 13px; }
+}
+
+@media (max-width: 360px){
+    .search-header{ flex-basis: 120px; }
+    .icon-search{ padding: 0 12px; gap: 8px; }
+    .nav-bar-header{ gap: 14px; font-size: 12.5px; }
+}
+
+/* phone turned sideways: header scrolls away instead of covering the screen */
+@media (max-height: 500px) and (orientation: landscape) and (max-width: 900px){
+    header{ position: absolute; }
+}
+
+@media (hover: none) and (pointer: coarse){
+    .nav-bar-header a{ padding: 8px 0; }
+}
+
+
+/* ==========================================================
+   PROPERTY PAGE (gallery on the left, details on the right)
+   2 columns -> 1 column on tablet/phone. No hero on this page,
+   so the top margin clears the fixed header.
+   ========================================================== */
 .container{
-    width: 1204px;
-    margin: 110px 0 90px 75px;
+    width: var(--box);
+    margin: calc(var(--header-h) + clamp(30px, 3.5vw, 50px)) auto clamp(56px, 6.3vw, 90px);
 
     display: grid;
-    grid-template-columns: 1.05fr 0.97fr;
-    gap: 28px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.97fr);
+    gap: clamp(20px, 2vw, 28px);
     align-items: stretch;
 }
 
-.container :where(*){
-    width: auto;
-    overflow: visible;
-}
+.container > *{ min-width: 0; }
 
 /* left: gallery */
 .gallery{
-    padding: 20px 28px;
+    padding: clamp(18px, 1.5vw, 20px) clamp(18px, 2vw, 28px);
     border: 1px solid #444;
     border-radius: 9px;
 }
 
 .gallery h3{
     margin-bottom: 15px;
-    font-size: 18px;
+    font-size: clamp(16px, 1.3vw, 18px);
     font-weight: 600;
 }
 
-.gallery input{
-    display: none;
-}
+.gallery input{ display: none; }
 
 .slider{
     position: relative;
     width: 100%;
-    height: 320px;
+    aspect-ratio: 1.8 / 1;
+    max-height: 420px;
     overflow: hidden;
     border-radius: 9px;
 }
 
 .slide{
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease;
@@ -200,9 +341,9 @@ header{
 
 .slide img{
     display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    width: 100% !important;
+    max-width: none;
+    height: 100% !important;
     object-fit: cover;
     object-position: center;
 }
@@ -219,8 +360,8 @@ header{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 46px;
-    height: 46px;
+    width: clamp(38px, 3.2vw, 46px);
+    height: clamp(38px, 3.2vw, 46px);
 
     display: flex;
     justify-content: center;
@@ -228,44 +369,37 @@ header{
 
     font-size: 18px;
     color: #fff;
-    background: #B4490B;
+    background: var(--brand);
     border-radius: 50%;
     cursor: pointer;
     user-select: none;
     transition: background 0.2s ease;
 }
 
-.arrow:hover{
-    background: #8A3708;
-}
+.arrow:hover{ background: var(--brand-dark); }
 
-.prev{
-    left: 12px;
-}
-
-.next{
-    right: 12px;
-}
+.prev{ left: 12px; }
+.next{ right: 12px; }
 
 .gallery .more-title{
-    margin: 18px 0 12px 0;
-    font-size: 18px;
+    margin: 18px 0 12px;
+    font-size: clamp(16px, 1.3vw, 18px);
     font-weight: 400;
 }
 
 /* the 3 small photos: equal size, with a gap between them */
 .small-images{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(8px, 1vw, 14px);
 }
 
 .small-images img{
     display: block;
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
     aspect-ratio: 4 / 3;
-    overflow: hidden;
     object-fit: cover;
     object-position: center;
     border-radius: 8px;
@@ -275,7 +409,7 @@ header{
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-top: 28px;
+    margin-top: clamp(20px, 2vw, 28px);
     padding: 10px 12px;
 
     border: 1px solid #444;
@@ -285,7 +419,7 @@ header{
 .home-icon{
     width: 75px;
     height: 70px;
-    flex-shrink: 0;
+    flex: 0 0 auto;
 
     display: flex;
     align-items: center;
@@ -293,25 +427,28 @@ header{
 
     font-size: 25px;
     color: #fff;
-    background: #B4490B;
+    background: var(--brand);
     border-radius: 9px;
 }
 
+.included-text{ min-width: 0; }
+
 .included-text h4{
     margin-bottom: 8px;
-    font-size: 12px;
+    font-size: clamp(12px, 1vw, 13px);
 }
 
 .included-text p{
-    font-size: 12px;
+    font-size: clamp(12px, 1vw, 13px);
     line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
 /* right: property details */
 .details{
     display: flex;
     flex-direction: column;
-    padding: 22px 35px 24px 35px;
+    padding: clamp(18px, 1.6vw, 22px) clamp(18px, 2.4vw, 35px) clamp(18px, 1.7vw, 24px);
 
     border: 1px solid #444;
     border-radius: 9px;
@@ -322,12 +459,12 @@ header{
     font-family: 'Poppins', 'Noto Sans', sans-serif;
     font-size: 12px;
     font-weight: 700;
-    color: #B4490B;
+    color: var(--brand);
 }
 
 .details h2{
     margin-bottom: 10px;
-    font-size: 22px;
+    font-size: clamp(20px, 1.6vw, 22px);
     font-weight: 600;
 }
 
@@ -340,15 +477,16 @@ header{
 }
 
 .location i{
+    flex: 0 0 auto;
     font-size: 26px;
-    color: #B4490B;
+    color: var(--brand);
 }
 
 .rent-box{
     margin-bottom: 22px;
     padding: 12px 18px;
 
-    background: #FBEBDF;
+    background: var(--cream);
     border-radius: 9px;
 }
 
@@ -359,9 +497,9 @@ header{
 
 .rent-box strong{
     font-family: 'Poppins', 'Noto Sans', sans-serif;
-    font-size: 27px;
+    font-size: clamp(24px, 2vw, 27px);
     font-weight: 800;
-    color: #B4490B;
+    color: var(--brand);
 }
 
 .rent-box span{
@@ -376,30 +514,31 @@ header{
     font-weight: 600;
 }
 
-.details .rules-title{
-    margin-top: 12px;
-}
+.details .rules-title{ margin-top: 12px; }
 
 .info-row,
 .rule-row{
     display: flex;
     align-items: center;
-    gap: 22px;
-    margin: 0 0 8px 15px;
+    gap: clamp(14px, 1.5vw, 22px);
+    margin: 0 0 8px clamp(0px, 1vw, 15px);
 }
+
+.info-row > div,
+.rule-row > p{ min-width: 0; overflow-wrap: anywhere; }
 
 .round-icon{
     width: 36px;
     height: 36px;
-    flex-shrink: 0;
+    flex: 0 0 auto;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     font-size: 14px;
-    color: #B4490B;
-    background: #FBEBDF;
+    color: var(--brand);
+    background: var(--cream);
     border-radius: 50%;
 }
 
@@ -409,9 +548,7 @@ header{
     color: #888;
 }
 
-.info-row p{
-    font-size: 13px;
-}
+.info-row p{ font-size: 13px; }
 
 .rule-row p{
     font-size: 13px;
@@ -429,39 +566,107 @@ header{
     text-align: center;
     color: #fff;
 
-    background: #B4490B;
+    background: var(--brand);
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-.book-button:hover{
-    background: #8A3708;
+.book-button:hover{ background: var(--brand-dark); }
+
+/* always keep a gap above the button, even when the card is short */
+.details > :nth-last-child(2){ margin-bottom: 22px; }
+
+/* back button (sits above both columns, same left edge as the gallery) */
+.back-bar{
+    grid-column: 1 / -1;
+    margin-bottom: -6px;
 }
 
-/*Footer of the website*/
+.back-button{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 20px 0 14px;
+
+    font-family: 'Poppins', 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--brand);
+
+    background: #fff;
+    border: 2px solid var(--brand);
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.back-button svg{
+    flex: 0 0 auto;
+    transition: transform 0.2s ease;
+}
+
+.back-button:hover,
+.back-button:focus-visible{
+    background: var(--brand);
+    color: #fff;
+}
+
+.back-button:hover svg,
+.back-button:focus-visible svg{ transform: translateX(-3px); }
+
+@media (hover: none) and (pointer: coarse){
+    .back-button{ min-height: 48px; }
+}
+
+/* tablet + phone: one column */
+@media (max-width: 900px){
+    .container{ grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 650px){
+    .gallery,
+    .details{ padding: 18px; }
+
+    .slider{ aspect-ratio: 1.5 / 1; }
+    .arrow{ font-size: 16px; }
+    .home-icon{ width: 60px; height: 60px; font-size: 22px; }
+}
+
+@media (max-width: 400px){
+    .info-row,
+    .rule-row{ margin-left: 0; }
+}
+
+@media (hover: none) and (pointer: coarse){
+    .book-button{ min-height: 48px; }
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
 footer{
     width: 100%;
-    background-color: #FBEBDF;
+    background-color: var(--cream);
 }
 
 footer .container-footer{
-    width: 1440px;
-    padding: 50px 60px 30px 60px;
+    width: 100%;
+    padding: 50px var(--pad) 30px;
 
     display: grid;
-    grid-template-columns: repeat(3, 440px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
     align-items: start;
 }
 
-footer .container-footer *{
-    width: auto;
-    overflow: visible;
-}
-.logo-footer{
-    margin-left: 10px;
-}
+footer .container-footer > *{ min-width: 0; }
+
+.logo-footer{ margin-left: 0; }
+
 footer .container-footer .text-left{
     display: flex;
     flex-direction: column;
@@ -473,14 +678,14 @@ footer .container-footer .text-right{
     grid-template-columns: max-content;
     justify-content: end;
     row-gap: 35px;
-    padding-right: 95px;
 }
+
 footer .container-footer p{
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
     font-size: 17px;
     color: #000;
-    white-space: nowrap;
+    overflow-wrap: anywhere;
 }
 
 footer .container-footer p:first-child{
@@ -491,13 +696,12 @@ footer .container-footer p:first-child{
 footer .container-footer .line{
     grid-column: 1 / -1;
     height: 1px;
+    margin: 40px 0 24px;
     background-color: #52606D;
-    margin: 40px 18px 24px 0;
 }
 
 footer .container-footer .container-footer-social{
     grid-column: 1 / -1;
-    margin-right: 18px;
 
     display: flex;
     flex-direction: row;
@@ -507,9 +711,7 @@ footer .container-footer .container-footer-social{
     gap: 14px 28px;
 }
 
-footer .container-footer .container-footer-social > div{
-    flex: 0 0 auto;
-}
+footer .container-footer .container-footer-social > div{ flex: 0 0 auto; }
 
 footer .container-footer .container-footer-social a{
     display: block;
@@ -529,55 +731,27 @@ footer .container-footer .container-footer-social > div:last-child{
     color: #000;
 }
 
-/*Tablet and phone*/
-@media (max-width: 1200px){
-    .container-header{
-        width: 100%;
-        height: auto;
-        padding: 12px 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 24px;
-    }
-
-    .nav-bar-header{
-        margin-right: 0;
-    }
-
-    .container{
-        width: auto;
-        margin: 150px 16px 60px 16px;
-        grid-template-columns: 1fr;
-    }
-
-    footer .container-footer{
-        width: 100%;
-        padding: 36px 20px 24px 20px;
-        grid-template-columns: 1fr;
-        row-gap: 28px;
-    }
-
-    footer .container-footer .text-right{
-        justify-content: start;
-        padding-right: 0;
-    }
-
-    footer .container-footer .line{
-        margin: 12px 0;
-    }
+@media (max-width: 1023px){
+    footer .container-footer p{ font-size: 15px; }
+    footer .container-footer .text-left{ gap: 24px; }
+    footer .container-footer .text-right{ row-gap: 24px; }
 }
 
-@media (max-width: 650px){
-    .gallery,
-    .details{
-        padding: 18px;
+@media (max-width: 768px){
+    footer .container-footer{
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+        padding-top: 40px;
     }
+    footer .container-footer .text-right{ justify-content: start; }
+    footer .container-footer .line{ margin: 10px 0; }
+    footer .container-footer .container-footer-social{ gap: 14px 22px; }
+}
 
-    .slider{
-        height: 240px;
-    }
-
-    .small-images{
-        gap: 8px;
-    }
+@media (max-width: 480px){
+    footer .container-footer{ row-gap: 22px; }
+    footer .container-footer p{ font-size: 14px; }
+    footer .container-footer .text-left,
+    footer .container-footer .text-right{ gap: 18px; row-gap: 18px; }
+    footer .container-footer .container-footer-social > div:last-child{ font-size: 10.5px; }
 }
